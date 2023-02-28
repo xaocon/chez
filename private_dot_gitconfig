@@ -1,0 +1,60 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Evan Pitstick
+	email = nerdx00@gmail.com
+
+[diff "ansible-vault"]
+	textconv = ansible-vault view --vault-password-file ~/.vault_pass.txt
+
+[alias]
+	co = checkout
+	st = status
+	br = branch
+	mclean = !git checkout $(git remote show origin | rg 'HEAD branch: (.*)' -or '$1') && git pull --rebase --autostash && git branch --merged | egrep -v \"(^\\*|master|dev)\" | xargs git branch -d
+	pl = pull --rebase --autostash
+	ph = push -u origin
+	fucked = ! echo 'are you sure you want to clear everything out? (ctrl-c if not)'; read; git reset --hard HEAD; git clean -dfx
+	b = branch
+
+[diff "nodiff"]
+	command = /usr/bin/true
+
+[core]
+	editor = /opt/homebrew/bin/code -wn
+
+[color]
+	ui = true
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    features = decorations
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
+
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
+[rerere]
+	enabled = true
+[credential]
+	helper = osxkeychain

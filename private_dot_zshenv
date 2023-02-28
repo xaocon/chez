@@ -1,0 +1,14 @@
+export COLORTERM=truecolor
+export CLICOLOR=1
+export GOPATH=$HOME/src/.go
+export EDITOR=nvim
+export VISUAL="code -wn"
+export KUBESHIM_ROOT="$HOME/.kubeshim"
+export BREW_PRE=/opt
+export ZDOTDIR=$HOME/.zsh
+
+# Should fill lesscolors stuff
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+typeset -U path
+export path=($HOME/.{local,krew,cargo,fzf}/bin $path)
