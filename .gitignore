@@ -1,0 +1,4 @@
+*zsh_history
+*.zwc
+dot_zsh/localmod/src/*.zsh
+*zcompdump

@@ -1,0 +1,20 @@
+ZIM_HOME=$HOME/.zim
+
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+
+setopt extendedglob extendedhistory histignorespace inc_append_history
+setopt correct completealiases interactivecomments longlistjobs
+setopt nobeep nohup
+
+alias kx=kubectx
+alias vim=nvim
+alias ssh="assh wrapper ssh --"
+
+mkdir -p .cache/zsh
+# all compleation and aliases should be defined before here
+zstyle ':zim:completion' dumpfile ~/.cache/zsh/dumpfile
+zstyle ':completion::complete:*' cache-path ~/.cache/zsh/zcompcache
+
+source ${ZIM_HOME}/init.zsh
